@@ -2,7 +2,7 @@ package CGI::CurlLog;
 use strict;
 use warnings;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 if (!$ENV{"GATEWAY_INTERFACE"}) {
     return 1;
@@ -71,6 +71,9 @@ elsif ($log_file =~ m{^~/}) {
 else {
     open $logfh, ">>", $log_file or die "Can't open $log_file: $!";
 }
+select($logfh);
+$| = 1;
+select(STDOUT);
 
 print $logfh "# " . localtime() . " request from $ENV{REMOTE_ADDR}\n";
 print $logfh "$cmd\n";
