@@ -1,0 +1,5 @@
+Revision history for CGI::CurlLog
+
+0.01 Wed Dec 14 18:05:14 CST 2016
+    - CGI::CurlLog a way of logging CGI parameters as curl command options
+
